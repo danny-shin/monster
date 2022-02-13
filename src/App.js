@@ -1,33 +1,32 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-
-const Monsters = [
-  { name: 'Frankenstein' },
-  { name: 'Dracula' },
-  { name: 'Zombie' },
-]
-
+import { CardList } from './components/card-list/card-list.component';
+import {SearchBox} from './components/search-box/search-box.component';
 
 function App() {
-  const [monsters, setMonsters] = React.useState(Monsters);
-  const [users, setUsers] = React.useState([]);
+  const [monsters, setMonsters] = React.useState([]);
+  const [searchField, setSearchField] = React.useState('');
+  const [filterMonsters, setFilterMonsters] = React.useState([]);
+
   React.useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then(res => res.json())
-      .then(users => {
-        console.log(users);
-        setMonsters(users);
-      });
-  }, []); // ComponentDidMount 
+    if (monsters.length === 0) {
+      fetch('https://jsonplaceholder.typicode.com/users')
+        .then(res => res.json())
+        .then(users => {
+          console.log(users);
+          setMonsters(users);
+        });
+    }
+    console.log(`useEffect searchField:${searchField}`);
+    setFilterMonsters(monsters.filter(m => m.name.toLowerCase().includes(searchField.toLowerCase())));
+  }, [searchField]); // ComponentDidMount  
 
   return (
     <div className="App">
-      {
-        // monsters.map((mon,ix) => <h1 key={mon.id}>{`${ix}: ${mon.name}`}</h1>)      
-        monsters.map((mon,ix) => <h5 key={mon.id}>{`${JSON.stringify(mon)}`}</h5>)      
-      }
-    </div>
+      <SearchBox placeholder='Search Monsters' handleChange={e =>setSearchField(e.target.value)} />
+      <CardList monsters={filterMonsters} />
+    </div> 
   );
 }
 
