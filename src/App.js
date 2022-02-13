@@ -19,7 +19,10 @@ function App() {
         });
     }
     console.log(`useEffect searchField:${searchField}`);
-    setFilterMonsters(monsters.filter(m => m.name.toLowerCase().includes(searchField.toLowerCase())));
+    setFilterMonsters(searchField === '' ? monsters :
+      monsters.filter(m => m.name.toLowerCase().includes(searchField.toLowerCase())
+      || m.email.toLowerCase().includes(searchField.toLowerCase())));
+    console.log(`filterMonsters:\n`, filterMonsters);
   }, [searchField]); // ComponentDidMount  
 
   return (
