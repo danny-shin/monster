@@ -20,12 +20,12 @@ function App() {
         });
     }
     console.log(`useEffect searchField:${searchField}`);
-    setFilterMonsters(searchField === '' ? monsters :
-       monsters.filter(m => m.name.toLowerCase().includes(searchField.toLowerCase())
-       || m.email.toLowerCase().includes(searchField.toLowerCase())));
-    // setFilterMonsters(
+    // setFilterMonsters(searchField === '' ? monsters :
     //   monsters.filter(m => m.name.toLowerCase().includes(searchField.toLowerCase())
     //   || m.email.toLowerCase().includes(searchField.toLowerCase())));
+    setFilterMonsters(
+      monsters.filter(m => m.name.toLowerCase().includes(searchField.toLowerCase())
+      || m.email.toLowerCase().includes(searchField.toLowerCase())));
     console.log(`useEffect filterMonsters:\n`, filterMonsters);
   }, [searchField, monsters]); // ComponentDidMount  
 
