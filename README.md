@@ -37,9 +37,21 @@ body {
 }
 ```
 
-## Github.com 
+## Github.com Static Web Server
 - new repository, public
 - Copy SSH
 - git remote add origin git@github.com:....
-- yarn add gh-pages
-- 
+- npm i gh-pages (yarn add gh-pages)
+- package.json
+  - "homepage": "https://danny-shin.github.io/monster",
+```
+  "private": true,
+  "homepage": "https://danny-shin.github.io/monster",
+  ...
+  "scripts": {
+	...
+    "test": "node scripts/test.js",
+    "predeploy": "npm build",
+    "deploy": "gh-pages -d build"
+  },
+```  
