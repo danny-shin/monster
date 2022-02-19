@@ -8,6 +8,7 @@ function App() {
   const [monsters, setMonsters] = React.useState([]);
   const [searchField, setSearchField] = React.useState('');
   const [filterMonsters, setFilterMonsters] = React.useState([]);
+  //const [title, setTitle] = React.useState('');
 
   React.useEffect(() => {
     if (monsters.length === 0) {
@@ -31,12 +32,14 @@ function App() {
 
   const handleChange = e => {
     setSearchField(e.target.value);
+    //setTitle(e.target.value);
   }
 
   return (
     <div className="App">
       {/* <SearchBox placeholder='Search Monsters' handleChange={e =>setSearchField(e.target.value)} /> */}
       <h1>Monster's Rolodex</h1>
+      {/* <h1>{title}</h1> */}
       <SearchBox placeholder='Search Monsters' handleChange={handleChange} />
       <CardList monsters={filterMonsters} />
     </div> 
