@@ -36,6 +36,7 @@ function App() {
   return (
     <div className="App">
       {/* <SearchBox placeholder='Search Monsters' handleChange={e =>setSearchField(e.target.value)} /> */}
+      <h1>Monster's Rolodex</h1>
       <SearchBox placeholder='Search Monsters' handleChange={handleChange} />
       <CardList monsters={filterMonsters} />
     </div> 
