@@ -36,7 +36,6 @@ body {
   )
 }
 ```
-
 ## Github.com Static Web Server
 - new repository, public
 - Copy SSH
@@ -51,7 +50,16 @@ body {
   "scripts": {
 	...
     "test": "node scripts/test.js",
-    "predeploy": "npm build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
 ```  
+- npm run deploy
+- git add .
+- git commit -m "adding files for github pages"
+- git push
+- repository - setting - Github pages
+
+@@@@@ FROM 52.React and ReactDOM @@@@@
+
+How to Use Google Sheets As a Database For Your Business
